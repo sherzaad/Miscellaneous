@@ -31,8 +31,9 @@ uint8_t solve_cubic(float a, float b, float c, float d, struct real_solutions_t 
   }
   else if (disciminant < 0 ) {
     p = pow((-1 * p), half);
-    float f = (2 / pow(3, half)) * p;
-    float g = (3 / 2) * pow(3, half);
+    float r = pow(3, half);
+    float f = (2 / r) * p;
+    float g = 1.5 * r;
     soln->number_of_solutions = 3; //3 real solutions
     soln->solutions[0] = f * sin(third * asin((g * q) / (p * p * p))) - (_a / 3);
     soln->solutions[1] = f * sin(third * asin(((g * q) / (p * p * p))) + (pi / 3)) - (_a / 3);
