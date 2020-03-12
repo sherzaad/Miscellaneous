@@ -50,8 +50,6 @@ void setup() {
   delayMicroseconds(1500);
   digitalWrite(sg90ControlPin, LOW);
   delay(20);
-  digitalWrite(sg90ControlPin, HIGH);
-  delay(20);
   //move servo fully CounterClockwise (approximately 90 steps)
   move_servo(90, CCWpulseWidth);
   
