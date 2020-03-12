@@ -60,11 +60,12 @@ void setup() {
 }
 
 void loop() {
-  //move servo Clockwise
+  
   if(digitalRead(DirectionInputPin) != dir_req){
     
     dir_req = digitalRead(DirectionInputPin);
-  
+    
+    //move servo Clockwise
     if (dir_req == HIGH) {
       move_servo(numberOfSteps, CWpulseWidth);
     }
