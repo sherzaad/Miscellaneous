@@ -17,6 +17,7 @@ uint8_t CWpulseWidth = 2;  // milliseconds
 int millisbetweenSteps = 60; // milliseconds - or try larger values for slower steps
 
 uint8_t numberOfSteps = 100;
+uint8_t dir_req;
 
 void move_servo(int Steps, uint8_t pulseWidth) {
   for (uint8_t n = 0; n < Steps; n++) {
@@ -50,6 +51,9 @@ void setup() {
   delay(20);
   //move servo fully CounterClockwise (approximately 90 steps)
   move_servo(90, CCWpulseWidth);
+  
+  //initialise direction flag
+  dir_req = LOW;
 
   //abitrary delay
   delay(2000);
@@ -57,12 +61,18 @@ void setup() {
 
 void loop() {
   //move servo Clockwise
-  if (digitalRead(DirectionInputPin)) {
-    move_servo(numberOfSteps, CWpulseWidth);
-  }
-  //move servo Counter-Clockwise
-  else {
-    move_servo(numberOfSteps, CCWpulseWidth);
+  if(digitalRead(DirectionInputPin) != dir_req){
+    
+    dir_req = digitalRead(DirectionInputPin);
+  
+    if (dir_req == HIGH) {
+      move_servo(numberOfSteps, CWpulseWidth);
+    }
+    //move servo Counter-Clockwise
+    else {
+      move_servo(numberOfSteps, CCWpulseWidth);
+    }
+    
   }
   
   delay(millisbetweenSteps);
