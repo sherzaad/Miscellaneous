@@ -37,7 +37,10 @@ void setup() {
   digitalWrite(sg90ControlPin, HIGH); //reduces chances of jitter on powerup/reset
                                       //a 1k pullup resistor between sg90ControlPin and VCC would also help
 
-  Serial.println("Starting Sg90 Test");
+  Serial.println("Starting Sg90 Demo");
+  
+  //abitrary delay
+  delay(2000);
 
   //servo initialisation
   //move servo to center positon
